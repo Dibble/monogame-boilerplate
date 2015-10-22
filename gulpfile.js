@@ -20,34 +20,34 @@ var isWindows = function() {
 }
 
 var build = function(done) {
-    exec('xbuild ' + __dirname + '/Boilerplate.sln ' +
-      '/target:Rebuild ' +
-      '/verbosity:quiet ' +
-      '/toolsversion:4.0 ' +
-      '/nologo ' +
-      '/property:Configuration=Debug',
-      function (error, stdout, stderr) {
-        var outputLines = stdout.split("\n");
-        outputLines.forEach(function(line) {
-          if (line.indexOf('warning CS') > 0) {
-            console.log(gutil.colors.yellow(line));
-          }
-          else if (line.indexOf('error CS') > 0) {
-            console.log(gutil.colors.red(line));
-          }
-          else {
-            console.log(line);
-          }
-        });
-
-        if (error !== null) {
-          gutil.log(gutil.colors.red('Build failed!'));
-        } else {
-          gutil.log(gutil.colors.cyan('Build complete!'));
+  exec('xbuild ' + __dirname + '/Boilerplate.sln ' +
+    '/target:Rebuild ' +
+    '/verbosity:quiet ' +
+    '/toolsversion:4.0 ' +
+    '/nologo ' +
+    '/property:Configuration=Debug',
+    function (error, stdout, stderr) {
+      var outputLines = stdout.split("\n");
+      outputLines.forEach(function(line) {
+        if (line.indexOf('warning CS') > 0) {
+          console.log(gutil.colors.yellow(line));
         }
+        else if (line.indexOf('error CS') > 0) {
+          console.log(gutil.colors.red(line));
+        }
+        else {
+          console.log(line);
+        }
+      });
 
-        done();
-    });
+      if (error !== null) {
+        gutil.log(gutil.colors.red('Build failed!'));
+      } else {
+        gutil.log(gutil.colors.cyan('Build complete!'));
+      }
+
+      done();
+  });
 }
 
 gulp.task('paket:bootstrap', function(done) {
