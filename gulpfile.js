@@ -51,7 +51,7 @@ var build = function(done) {
     });
   } else {
     spawn('xbuild', [
-      mainProject + '.sln',
+      'Boilerplate.sln',
       '/target:Rebuild',
       '/verbosity:quiet',
       '/toolsversion:4.0',
