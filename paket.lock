@@ -1,0 +1,7 @@
+NUGET
+  remote: https://nuget.org/api/v2
+  specs:
+    EmptyKeysUI (1.10.0.0)
+    MonoGame.Extended (0.3.44-alpha)
+    MonoGame.Framework.Linux (3.4.0.459)
+    MonoGame.Framework.WindowsGL (3.4.0.459)

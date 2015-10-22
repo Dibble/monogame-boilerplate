@@ -1,0 +1,6 @@
+source https://nuget.org/api/v2
+
+nuget MonoGame.Framework.Linux
+nuget Monogame.Framework.WindowsGL
+nuget EmptyKeysUI
+nuget MonoGame.Extended

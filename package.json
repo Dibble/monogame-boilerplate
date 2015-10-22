@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-msbuild": "^0.2.13",
+    "gulp-task-listing": "^1.0.1"
+  }
+}
