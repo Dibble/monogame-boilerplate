@@ -20,7 +20,6 @@ var isWindows = function() {
 }
 
 var build = function(done) {
-  if (isWindows()) {
     exec('xbuild ' + __dirname + '/Boilerplate.sln ' +
       '/target:Rebuild ' +
       '/verbosity:quiet ' +
@@ -49,25 +48,6 @@ var build = function(done) {
 
         done();
     });
-  } else {
-    spawn('xbuild', [
-      'Boilerplate.sln',
-      '/target:Rebuild',
-      '/verbosity:quiet',
-      '/toolsversion:4.0',
-      '/nologo',
-      '/property:Configuration=Debug'
-    ], {stdio:'inherit'})
-    .on('error', function( err ){ throw err })
-    .on('exit', function (err) {
-      if (err) {
-        gutil.log(gutil.colors.red('Build failed!'));
-      } else {
-        gutil.log(gutil.colors.cyan('Build complete!'));
-      }
-      done();
-    });
-  }
 }
 
 gulp.task('paket:bootstrap', function(done) {
