@@ -38,11 +38,11 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="OpenTK.dll.config">
+    <Content Include="net40\OpenTK.dll.config">
       <Paket>True</Paket>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tao.Sdl.dll.config">
+    <Content Include="net40\Tao.Sdl.dll.config">
       <Paket>True</Paket>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -70,9 +70,13 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
+
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="net40\OpenTK.dll.config" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="net40\Tao.Sdl.dll.config" DestinationFolder="$(OutDir)" />
+    <RemoveDir Directories="$(OutDir)\net40" />
+  </Target>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6')">
       <ItemGroup>
